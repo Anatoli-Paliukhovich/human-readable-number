@@ -49,7 +49,7 @@ module.exports = function toReadable(number) {
 			return `${naturalNum[strNum[0]]} hundred ${dozens[strNum[1]]}`;
 		} else if (strNum[1] === '0' && strNum[2] !== '0') {
 			return `${naturalNum[strNum[0]]} hundred ${naturalNum[strNum[2]]}`
-		} else if (number > 110 && number < 120) {
+		} else if (strNum[1] === '1') {
 			return `${naturalNum[strNum[0]]} hundred ${naturalNum[strNum.slice(1, 3).join('')]}`
 		} else {
 			return `${naturalNum[strNum[0]]} hundred ${dozens[strNum[1]]} ${naturalNum[strNum[2]]}`;
