@@ -35,7 +35,6 @@ module.exports = function toReadable(number) {
 		9: 'ninety'
 	}
 	let strNum = String(number).split('');
-
 	if (number >= 20 && strNum.length === 2) {
 		if (number % 10 === 0) {
 			return dozens[strNum[0]];
@@ -48,12 +47,14 @@ module.exports = function toReadable(number) {
 			return `${naturalNum[strNum[0]]} hundred`;
 		} else if (number % 10 === 0) {
 			return `${naturalNum[strNum[0]]} hundred ${dozens[strNum[1]]}`;
-		}
-		else {
+		} else if (strNum[1] === '0' && strNum[2] !== '0') {
+			return `${naturalNum[strNum[0]]} hundred ${naturalNum[strNum[2]]}`
+		} else if (number > 110 && number < 120) {
+			return `${naturalNum[strNum[0]]} hundred ${naturalNum[strNum.slice(1, 3).join('')]}`
+		} else {
 			return `${naturalNum[strNum[0]]} hundred ${dozens[strNum[1]]} ${naturalNum[strNum[2]]}`;
 		}
-	}
-	if (number >= 1000 && strNum.length === 4) {
+	} if (number >= 1000 && strNum.length === 4) {
 		if (number % 1000 === 0) {
 			return `${naturalNum[strNum[0]]} thousand`;
 		} else if (number % 10 === 0) {
@@ -75,6 +76,5 @@ module.exports = function toReadable(number) {
 			return `${naturalNum[strNum.slice(0, 2).join('')]} thousand ${naturalNum[strNum[2]]} hundred ${dozens[strNum[3]]} ${naturalNum[strNum[4]]}`;
 		}
 	}
-
 	return naturalNum[number];
 }
