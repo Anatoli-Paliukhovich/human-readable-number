@@ -67,8 +67,10 @@ module.exports = function toReadable(number) {
 			return `${dozens[strNum[0]]} thousand`;
 		} else if (number % 10 === 0) {
 			return `${dozens[strNum[0]]} thousand ${naturalNum[strNum[2]]} hundred ${dozens[strNum[2]]}`;
-		} else {
+		} else if (strNum[1] === '0') {
 			return `${dozens[strNum[0]]} thousand ${naturalNum[strNum[2]]} hundred ${dozens[strNum[2]]} ${naturalNum[strNum[4]]}`;
+		} else {
+			return `${dozens[strNum[0]]} ${naturalNum[strNum[1]]} thousand ${naturalNum[strNum[2]]} hundred ${dozens[strNum[2]]} ${naturalNum[strNum[4]]}`;
 		}
 	}
 	return naturalNum[number];
