@@ -63,4 +63,4 @@ module.exports = function toReadable(number) {
 	}
 	return naturalNum[number];
 }
-toReadable();
+
